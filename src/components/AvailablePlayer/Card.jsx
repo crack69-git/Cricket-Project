@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import flagImg from '../../assets/report.png'
 import PlayerImg from '../../assets/user1.png'
-const Card = ({ player, coin, setCoin }) => {
-    const [state, setState] = useState(true);
+const Card = ({ player, coin, setCoin, selectedPlayers, setSelectedPlayers }) => {
+    const [state, setState] = React.useState(true);
     const handleChoosePlayer = () => {
-        const totalCoin = coin - player.price;
-        if (totalCoin < player.price) {
+        if (coin < player.price) {
             alert('You do not have enough coins to choose this player.');
-            setState(true);
             return;
         }
-        else {
-            setCoin(totalCoin);
-        }
-        alert(`You have chosen ${player.name} as your player.`);
         setState(false);
-        console.log(state);
+        const totalCoin = coin - player.price;
+        setCoin(totalCoin);
+        alert(`You have chosen ${player.name} as your player.`);
+        setSelectedPlayers([...selectedPlayers, player]);
     }
     return (
         <div className="card bg-white w-full shadow-sm p-4">
@@ -35,7 +32,7 @@ const Card = ({ player, coin, setCoin }) => {
                         <p>{player.country}</p>
                     </div>
                     <div>
-                        <div class="badge bg-white text-xs text-black">{player.role}</div>
+                        <div className="badge bg-white text-xs text-black">{player.role}</div>
                     </div>
                 </div>
                 <div>
@@ -49,7 +46,9 @@ const Card = ({ player, coin, setCoin }) => {
                     </div>
                     <div className='flex justify-between items-center mt-4'>
                         <p className='font-bold'>Price$<span>{player.price}</span></p>
-                        <div className="btn bg-white text-black" onClick={handleChoosePlayer}>Choose Player</div>
+                        <div className="btn border bg-slate-300 text-black" onClick={handleChoosePlayer} disabled={!state} >
+                            {state ? 'Choose Player' : 'Player Selected'}
+                        </div>
                     </div>
 
                 </div>

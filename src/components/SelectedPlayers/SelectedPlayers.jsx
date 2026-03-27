@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SelectedPlayers = () => {
+import SeletedCard from './seletedCard';
+const SelectedPlayers = ({ selectedPlayers }) => {
+    console.log(selectedPlayers);
     return (
-        <div>
-            <h2>Selected Players</h2>
-        </div>
+        selectedPlayers.map((player, index) => <SeletedCard key={index} player={player} />)
     );
 };
 
