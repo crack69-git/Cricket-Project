@@ -1,7 +1,6 @@
 import React from 'react';
 import SelectedPlayers from './SelectedPlayers';
 const selectdiv = ({ selectedPlayers, setSelectedPlayers, Coin, SetCoin }) => {
-    // console.log("selected players in selectdiv", selectedPlayers);
     const handleRedirect = () => {
         window.location.href = '../Players/Player.jsx';
     }

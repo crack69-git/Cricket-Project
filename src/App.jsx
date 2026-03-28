@@ -1,12 +1,9 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar.jsx'
-import AvailablePlayer from './components/AvailablePlayer/AvailablePlayer.jsx'
-import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers.jsx'
 import { Suspense, useState, useMemo } from 'react'
 import Player from './components/Players/Player.jsx'
 import Herosection from './components/HeroSection/Herosection.jsx'
 import Subscription from './components/subscription/Subscription.jsx'
-import Footer from './components/footer/Footer.jsx'
 const fetchPromise = async () => {
   const res = await fetch('/player.json');
   const data = await res.json();
@@ -30,7 +27,7 @@ function App() {
         </Suspense>
         <Subscription />
       </main>
-      <Footer />
+
     </div>
   )
 }
