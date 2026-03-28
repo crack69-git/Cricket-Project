@@ -4,6 +4,7 @@ import { Suspense, useState, useMemo } from 'react'
 import Player from './components/Players/Player.jsx'
 import Herosection from './components/HeroSection/Herosection.jsx'
 import Subscription from './components/subscription/Subscription.jsx'
+import { ToastContainer } from 'react-toastify'
 const fetchPromise = async () => {
   const res = await fetch('/player.json');
   const data = await res.json();
@@ -27,7 +28,6 @@ function App() {
         </Suspense>
         <Subscription />
       </main>
-
     </div>
   )
 }

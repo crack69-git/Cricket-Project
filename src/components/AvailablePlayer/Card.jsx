@@ -1,18 +1,32 @@
 import React from 'react';
 import flagImg from '../../assets/report.png'
 import PlayerImg from '../../assets/user1.png'
+import { toast, Bounce } from 'react-toastify';
 const Card = ({ player, coin, setCoin, selectedPlayers, setSelectedPlayers }) => {
     const [state, setState] = React.useState(true);
     const handleChoosePlayer = () => {
         if (coin < player.price) {
-            alert('You do not have enough coins to choose this player.');
+            toast.error('You do not have enough coins to choose this player.');
             return;
         }
-        setState(false);
-        const totalCoin = coin - player.price;
-        setCoin(totalCoin);
-        alert(`You have chosen ${player.name} as your player.`);
-        setSelectedPlayers([...selectedPlayers, player]);
+        else {
+            setState(false);
+            const totalCoin = coin - player.price;
+            setCoin(totalCoin);
+            toast.success(`You have chosen ${player.name} as your player.`, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            setSelectedPlayers([...selectedPlayers, player]);
+        }
+
     }
     return (
         <div className="card bg-white w-full shadow-sm p-4">
