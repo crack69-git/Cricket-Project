@@ -18,7 +18,7 @@ const Player = ({ playerPromise, coin, setCoin }) => {
                     <button onClick={handleToggle} className={!isAvailable ? "btn btn-active bg-[#E7FE29] text-black rounded-l-none rounded-r-full" : "btn btn-active bg-white text-black rounded-l-none rounded-r-full"}>Selected ({selectedPlayers.length})</button>
                 </div>
             </div>
-            {isAvailable ? <AvailablePlayer playerPromise={playerPromise} coin={coin} setCoin={setCoin} selectedPlayers={selectedPlayers} setSelectedPlayers={setSelectedPlayers} /> : <SelectedDiv selectedPlayers={selectedPlayers} />}
+            {isAvailable ? <AvailablePlayer playerPromise={playerPromise} coin={coin} setCoin={setCoin} selectedPlayers={selectedPlayers} setSelectedPlayers={setSelectedPlayers} /> : <SelectedDiv selectedPlayers={selectedPlayers} setSelectedPlayers={setSelectedPlayers} Coin={coin} SetCoin={setCoin} />}
         </div>
     );
 };

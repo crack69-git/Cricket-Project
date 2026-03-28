@@ -2,11 +2,11 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar.jsx'
 import AvailablePlayer from './components/AvailablePlayer/AvailablePlayer.jsx'
 import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers.jsx'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useMemo } from 'react'
 import Player from './components/Players/Player.jsx'
 import Herosection from './components/HeroSection/Herosection.jsx'
-
-
+import Subscription from './components/subscription/Subscription.jsx'
+import Footer from './components/footer/Footer.jsx'
 const fetchPromise = async () => {
   const res = await fetch('/player.json');
   const data = await res.json();
@@ -16,7 +16,7 @@ const fetchPromise = async () => {
 
 function App() {
   const [coin, setCoin] = useState(50000);
-  const playerPromise = fetchPromise();
+  const playerPromise = useMemo(() => fetchPromise(), []);
   return (
     <div className="bg-white text-black min-h-screen">
       <header>
@@ -28,7 +28,9 @@ function App() {
         <Suspense fallback={<span className="loading loading-spinner text-black border-black"></span>}>
           <Player playerPromise={playerPromise} coin={coin} setCoin={setCoin} />
         </Suspense>
+        <Subscription />
       </main>
+      <Footer />
     </div>
   )
 }

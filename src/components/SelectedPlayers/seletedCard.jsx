@@ -1,6 +1,17 @@
 import React from 'react';
 import { Trash2 } from 'lucide-react';
-const SeletedCard = ({ player }) => {
+const SeletedCard = ({ player, setSelectedPlayers, selectedPlayers, Coin, SetCoin }) => {
+
+    const handleDelete = () => {
+        console.log("player", selectedPlayers);
+        const filteredPlayers = selectedPlayers.filter(p => p.id !== player.id);
+        console.log("filtered text", filteredPlayers);
+        setSelectedPlayers(filteredPlayers);
+        const playerPrice = parseInt(player.price);
+        Coin += playerPrice;
+        SetCoin(Coin);
+        console.log("coin", Coin);
+    }
     return (
         <div className='flex justify-between items-center mt-6 border border-gray-300 p-4 rounded-lg'>
             <div className='flex gap-2 items-center'>
@@ -11,7 +22,7 @@ const SeletedCard = ({ player }) => {
                 </div>
             </div>
             <div className='border p-2 rounded-lg border-gray-300'>
-                <Trash2 className='text-red-500' />
+                <Trash2 className='text-red-500' onClick={handleDelete} />
             </div>
         </div>
     );

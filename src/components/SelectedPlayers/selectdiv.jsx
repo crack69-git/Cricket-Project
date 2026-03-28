@@ -1,11 +1,15 @@
 import React from 'react';
 import SelectedPlayers from './SelectedPlayers';
-const selectdiv = ({ selectedPlayers }) => {
+const selectdiv = ({ selectedPlayers, setSelectedPlayers, Coin, SetCoin }) => {
+    // console.log("selected players in selectdiv", selectedPlayers);
+    const handleRedirect = () => {
+        window.location.href = '../Players/Player.jsx';
+    }
     return (
         <div>
-            <SelectedPlayers selectedPlayers={selectedPlayers} />
+            <SelectedPlayers selectedPlayers={selectedPlayers} setSelectedPlayers={setSelectedPlayers} Coin={Coin} SetCoin={SetCoin} />
             <div className='mt-4'>
-                <button class="btn btn-active bg-green-300 text-black font-bold border-none outline-2 outline-green-300">Add more players</button>
+                <button onClick={handleRedirect} className="btn btn-active bg-green-300 text-black font-bold border-none outline-2 outline-green-300">Add more players</button>
             </div>
         </div>
     );

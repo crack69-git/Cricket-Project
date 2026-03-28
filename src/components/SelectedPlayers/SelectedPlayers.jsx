@@ -1,10 +1,9 @@
 import React from 'react';
 
 import SeletedCard from './seletedCard';
-const SelectedPlayers = ({ selectedPlayers }) => {
-    console.log(selectedPlayers);
+const SelectedPlayers = ({ selectedPlayers, setSelectedPlayers, Coin, SetCoin }) => {
     return (
-        selectedPlayers.map((player, index) => <SeletedCard key={index} player={player} />)
+        selectedPlayers.map((player, index) => <SeletedCard key={index} player={player} setSelectedPlayers={setSelectedPlayers} selectedPlayers={selectedPlayers} Coin={Coin} SetCoin={SetCoin} />)
     );
 };
 
